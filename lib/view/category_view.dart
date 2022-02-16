@@ -39,7 +39,6 @@ class _CategoryViewState extends State<CategoryView> {
           stream: getCategoryBloc.subject.stream,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              print(snapshot.data!.status);
               switch (snapshot.data!.status) {
                 case Status.LOADING:
                   return Loading(

@@ -56,7 +56,7 @@ class DioProvider {
       }
 
       if (response.statusCode == 200) {
-        return json.decode(response.data.toString());
+        return response.data;
       } else if (response.statusCode == 401) {
         throw Exception("Unauthorized");
       } else if (response.statusCode == 500) {
@@ -67,7 +67,7 @@ class DioProvider {
     } on SocketException catch (e) {
       throw Exception("Not Internet Connection");
     } on FormatException catch (e) {
-      throw Exception("Bad response format" + e.message);
+      throw Exception("Bad response format");
     } on DioError catch (e) {
       throw Exception(e);
     } catch (e) {
