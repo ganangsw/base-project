@@ -1,5 +1,5 @@
 import 'package:base_project/models/model_by_category.dart';
-import 'package:base_project/networking/api_provider.dart';
+import 'package:base_project/networking/http/api_provider.dart';
 
 class RepositoryByCategory {
   final ApiProvider _provider = ApiProvider();
