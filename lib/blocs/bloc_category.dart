@@ -8,7 +8,7 @@ class BlocCategory {
   final BehaviorSubject<Response<ModelCategory>> _subject = BehaviorSubject();
 
   getCategory() async {
-    _subject.add(Response.loading("Loading"));
+    _subject.add(Response.loading("Loading..."));
     try {
       ModelCategory response = await _repositoryCategory.getCategory();
       _subject.add(Response.completed(response));

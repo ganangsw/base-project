@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
-import '../custom_exception.dart';
+import 'custom_exception.dart';
 
-class ApiProvider {
+class HttpProvider {
   final String _baseUrl = "https://api.chucknorris.io/";
 
   Future<dynamic> get(String url) async {
