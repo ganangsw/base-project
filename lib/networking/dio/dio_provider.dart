@@ -20,9 +20,10 @@ class DioProvider {
         error: true,
         compact: true,
         maxWidth: 90));
-    /*dio.interceptors.add(
+   /* dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (requestOptions, handler) {
+          print(withAuth);
           if (withAuth == true) {
             var headers = {
               'content-type': 'application/json',
@@ -62,16 +63,16 @@ class DioProvider {
       } else if (response.statusCode == 500) {
         throw Exception("Server Error");
       } else {
-        throw Exception("Something does wen't wrong");
+        throw Exception("Something does won't wrong");
       }
-    } on SocketException catch (e) {
+    } on SocketException {
       throw Exception("Not Internet Connection");
-    } on FormatException catch (e) {
+    } on FormatException {
       throw Exception("Bad response format");
     } on DioError catch (e) {
-      throw Exception(e);
+      throw Exception(e.message);
     } catch (e) {
-      throw Exception("Something wen't wrong");
+      throw Exception("Something won't wrong");
     }
   }
 }

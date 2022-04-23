@@ -11,12 +11,11 @@ class CategoryView extends StatefulWidget {
 }
 
 class _CategoryViewState extends State<CategoryView> {
-
-  @override
-  void initState() {
-    super.initState();
-    getCategoryBloc.getCategory();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   getCategoryBloc.getCategory();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +31,12 @@ class _CategoryViewState extends State<CategoryView> {
           ),
         ),
         backgroundColor: Colors.blue,
+        actions: [
+          InkWell(
+            child: const Icon(Icons.add),
+            onTap: () => getCategoryBloc.getCategory(),
+          )
+        ],
       ),
       body: RefreshIndicator(
         onRefresh: () => getCategoryBloc.getCategory(),
@@ -78,35 +83,37 @@ class CategoryList extends StatelessWidget {
       body: ListView.builder(
         itemBuilder: (context, index) {
           return Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 0.0,
-                vertical: 1.0,
-              ),
-              child: InkWell(
-                  onTap: () {
-                    // Navigator.of(context).push(MaterialPageRoute(
-                    //     builder: (context) =>
-                    //         ShowChuckyJoke(categoryList.categories[index])));
-                  },
-                  child: SizedBox(
-                    height: 65,
-                    child: Container(
-                      color: const Color(0xFF333333),
-                      alignment: Alignment.center,
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(4, 0, 0, 0),
-                        child: Text(
-                          categoryList.categories[index],
-                          style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w100,
-                              fontFamily: 'Roboto'),
-                          textAlign: TextAlign.left,
-                        ),
-                      ),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 0.0,
+              vertical: 1.0,
+            ),
+            child: InkWell(
+              onTap: () {
+                // Navigator.of(context).push(MaterialPageRoute(
+                //     builder: (context) =>
+                //         ShowChuckyJoke(categoryList.categories[index])));
+              },
+              child: SizedBox(
+                height: 65,
+                child: Container(
+                  color: const Color(0xFF333333),
+                  alignment: Alignment.center,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(4, 0, 0, 0),
+                    child: Text(
+                      categoryList.categories[index],
+                      style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w100,
+                          fontFamily: 'Roboto'),
+                      textAlign: TextAlign.left,
                     ),
-                  )));
+                  ),
+                ),
+              ),
+            ),
+          );
         },
         itemCount: categoryList.categories.length,
         shrinkWrap: true,
@@ -130,7 +137,7 @@ class Error extends StatelessWidget {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
+        children: [
           Text(
             errorMessage,
             textAlign: TextAlign.center,
